@@ -7,10 +7,21 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Form {
+                Section {
+                    Text("Welcome to my app...")
+                }
+            }
+            .navigationBarTitle(Text("SwiftUI"),
+                                displayMode:
+                                    .inline)
+            
+        }
     }
 }
 
@@ -19,3 +30,21 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
+
+
+//struct ContentView: View {
+//    var body: some View {
+//        Text("Hello, world!")
+//        Text("How are you today?")
+//            .padding()
+//    }
+//}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
