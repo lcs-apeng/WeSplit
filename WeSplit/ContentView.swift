@@ -2,49 +2,28 @@
 //  ContentView.swift
 //  WeSplit
 //
-//  Created by amelia peng on 2020-11-04.
+//  Created by Amelia Peng on 2020-11-05.
 //
 
 import SwiftUI
 
-
-
 struct ContentView: View {
-    var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    Text("Welcome to my app...")
-                }
-            }
-            .navigationBarTitle(Text("SwiftUI"),
-                                displayMode:
-                                    .inline)
-            
-        }
+    @State private var checkAmount = ""
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 2
+    
+    let tipPercentages = [10, 15, 20, 25, 0]
+    
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        let tipSelection = Double(tipPercentages[tipPercentage])
+        let orderAmount = Double(checkAmount) ?? 0
+        
+        
+        let tipValue = orderAmount / 100 * tipSelection
+        let grandTotal = orderAmount + tipValue
+        let amountPerPerson = grandTotal / peopleCount
+        
+        return amountPerPerson
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-
-
-
-
-//struct ContentView: View {
-//    var body: some View {
-//        Text("Hello, world!")
-//        Text("How are you today?")
-//            .padding()
-//    }
-//}
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+   
